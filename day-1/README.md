@@ -1,5 +1,6 @@
 # Ansible Day-1
 
+## Initial run
 ```bash
 ansible all --key-file ~/key_pair.pem --user debian -i inventory -m ping
 ```
@@ -8,7 +9,7 @@ ansible all --key-file ~/key_pair.pem --user debian -i inventory -m ping
 $${\color{green}Output:}$$
 
 ```bash
- 192.168.2.243 | SUCCESS => {
+192.168.2.243 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
     },
@@ -17,3 +18,20 @@ $${\color{green}Output:}$$
 }
 ```
 
+## Running with local ansible.cfg
+```bash
+ansible all -m ping
+```
+<hr>
+
+$${\color{green}Output:}$$
+
+```bash
+192.168.2.243 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
