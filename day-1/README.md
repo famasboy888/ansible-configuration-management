@@ -3,7 +3,7 @@
 ```bash
 ansible all --key-file ~/key_pair.pem --user debian -i inventory -m ping
 ```
-<h1 style="color: red">Output:</h1>
+<span style="color:blue">some *blue* text</span>.
 
 ```bash
  192.168.2.243 | SUCCESS => {
