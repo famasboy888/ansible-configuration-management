@@ -271,4 +271,36 @@ $${\color{green}Output:}$$
 ```
 </details>
 
+## Running **apt upgrade** in worker instance
+```bash
+ansible all -m apt -a "upgrade=dist" --become
+```
+
+**upgrade** : will upgrade
+
+<details>
+  <summary><i>Output</i></summary>
+$${\color{green}Output:}$$
+
+```bash
+192.168.2.243 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "msg": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nCalculating upgrade...\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\n",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\nCalculating upgrade...\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "Calculating upgrade...",
+        "0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded."
+    ]
+}
+```
+</details>
+
 
