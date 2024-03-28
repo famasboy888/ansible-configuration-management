@@ -62,3 +62,30 @@ $${\color{green}Output:}$$
     "changed": true
 }
 ```
+
+## Running **apt install vim-nox** in worker instance
+```bash
+ansible all -m apt -a "name=vim-nox state=latest" --become
+```
+
+**name=** : install <package>
+
+**state** : package version
+
+<details>
+  <summary><i>Output</i></summary>
+$${\color{green}Output:}$$
+
+```bash
+192.168.2.243 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "cache_update_time": 1711643758,
+    "cache_updated": true,
+    "changed": true
+}
+```
+</details>
+
+
