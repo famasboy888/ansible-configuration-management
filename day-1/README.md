@@ -3,6 +3,8 @@
 ```bash
 ansible all --key-file ~/key_pair.pem --user debian -i inventory -m ping
 ```
+<hr>
+
 $${\color{green}Output:}$$
 
 ```bash
