@@ -6,7 +6,7 @@ ansible all --key-file ~/key_pair.pem --user debian -i inventory -m ping
 
 ```bash
 Output:
-192.168.2.243 | $${\color{lightgreen}SUCCESS}$$ => {
++ 192.168.2.243 | $${\color{lightgreen}SUCCESS}$$ => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
     },
@@ -14,6 +14,4 @@ Output:
     "ping": "pong"
 }
 ```
-
- $${\color{lightgreen}SUCCESS}$$
 
