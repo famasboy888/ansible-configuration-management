@@ -1,8 +1,8 @@
 # Ansible Day-4
 
-## Run Playbook based on Tags
+## Transfer files from Controller to Instance using Ansible using COPY module
 
-Reference for **[Tags](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tags.html)**.
+Reference for **[Copy](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html#examples)**.
 
 ```bash
 ---
@@ -12,24 +12,21 @@ Reference for **[Tags](https://docs.ansible.com/ansible/latest/playbook_guide/pl
   tasks:
 
   - name: Installing on Debian master
-    tags: debian                              <== adding tag to target debian only
+    tags: debian
     package:
       name:
          - "{{ apache_package }}"
       state: latest
       update_cache: true
 
-- hosts: worker
-  become: true
-  tasks:
-
-  - name: Installing on Ubuntu worker
-    tags: ubuntu                             <== adding tag to target ubuntu only
-    package:
-      name:
-         - "{{ nano_package }}"
-      state: latest
-      update_cache: true
+  - name: Copy and replace apache index.html
+    tags: debian
+    copy:                                            <== Copy module
+      src: files/default_site.html                   <== source of file
+      dest: /var/www/html/index.html                 <== destination insidde the instance. You can rename it by changing the final file name.
+      owner: root                                    <== Name of the user that should own the filesystem object, as would be fed to chown.
+      group: root                                    <== When left unspecified, it uses the current group of the current user unless you are root, in which case it can preserve the previous ownership.
+      mode: '0644'                                   <== You must either add a leading zero so that Ansible’s YAML parser knows it is an octal number (like 0644 or 01777) or quote it (like '644' or '1777')    
 ```
 
 Variables are declared inside **inventory file**.
@@ -79,6 +76,9 @@ ok: [192.168.2.243]
 TASK [Installing on Debian master] *************************************************************************************
 ok: [192.168.2.243]
 
+TASK [Copy and replace apache index.html] ******************************************************************************
+changed: [192.168.2.243]
+
 PLAY [worker] **********************************************************************************************************
 
 TASK [Gathering Facts] *************************************************************************************************
@@ -86,7 +86,7 @@ ok: [192.168.2.240]
 
 PLAY RECAP *************************************************************************************************************
 192.168.2.240              : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-192.168.2.243              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+192.168.2.243              : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 ```
 </details>
