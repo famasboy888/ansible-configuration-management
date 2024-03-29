@@ -1,0 +1,25 @@
+---
+
+- hosts: master
+  become: true
+  tasks:
+
+  - name: Installing on Debian master
+    tags: debian
+    package:
+      name:
+         - "{{ apache_package }}"
+      state: latest
+      update_cache: true
+
+- hosts: worker
+  become: true
+  tasks:
+
+  - name: Installing on Ubuntu worker
+    tags: ubuntu
+    package:
+      name:
+         - "{{ nano_package }}"
+      state: latest
+      update_cache: true
