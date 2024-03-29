@@ -4,7 +4,7 @@
 
 ### Ansible Playbook is written in **YAML file**
 ```bash
-sudo nano install_apache.yml
+sudo nano install_apache.yaml
 ```
 
 Referenche for **apt module**: [Ref linkn](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html)
