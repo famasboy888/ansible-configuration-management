@@ -1,13 +1,8 @@
-# Ansible Day-2
+# Ansible Day-3
 
-## Running Ansible Playbook in worker instance
+## Adding "when" conditions
 
-### Ansible Playbook is written in **YAML file**
-```bash
-sudo nano install_apache.yaml
-```
-
-Referenche for **apt module**: [Ref linkn](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html)
+Referenche for **[Conditionals](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html#conditionals-based-on-ansible-facts)**.
 
 ```bash
 ---                                            <== starts with 3 dash lines
