@@ -1,0 +1,16 @@
+---
+
+- hosts: all
+  become: true
+  roles:
+    - base
+
+- hosts: master
+  become: true
+  roles:
+    - workstation
+
+- hosts: worker
+  become: true
+  roles:
+    - worker
