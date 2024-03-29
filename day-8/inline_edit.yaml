@@ -1,0 +1,21 @@
+---
+
+- hosts: master
+  become: true
+  tasks:
+
+  - name: Edit inline custom script file
+    tags: debian
+    lineinfile:
+      path: /usr/local/bin/my_custom_script.sh
+      regexp: '^echo'
+      line: echo 'hello world I am cool!'
+    register: custom_service
+
+  - name: Restart custom service
+    tags: debian
+    service:
+        name: my_custom_service
+        state: restarted
+        enabled: true
+    when: custom_service.changed
