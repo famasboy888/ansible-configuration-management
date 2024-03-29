@@ -102,6 +102,60 @@ PLAY RECAP *********************************************************************
 
 <img width="1280" alt="OpenStack" src="https://github.com/famasboy888/ansible-configuration-management/assets/23441168/7d79f9ad-d4af-43a6-a9f9-775988729a9c">
 
+<hr>
+
+## Modify inline script and restart service
+
+Reference for **[Line In File Module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/lineinfile_module.html)**.
+
+```bash
+---
+
+- hosts: master
+  become: true
+  tasks:
+
+  - name: Edit inline custom script file
+    tags: debian
+    lineinfile:                                                    <== Line in file module to edit in line
+      path: /usr/local/bin/my_custom_script.sh
+      regexp: '^echo'                                              <== Use Regular Expression to find certain line
+      line: echo 'hello world I am cool!'                          <== String that is the replacement
+    register: custom_service                                       <== It will be registered if this is successful
+
+  - name: Restart custom service
+    tags: debian
+    service:
+        name: my_custom_service
+        state: restarted
+        enabled: true
+    when: custom_service.changed                                   <== It will check if Line In File was successful
+```
+
+<details>
+  <summary><i>Output</i></summary>
+$${\color{green}Output:}$$
+
+```bash
+PLAY [master] *******************************************************************
+
+TASK [Gathering Facts] **********************************************************
+ok: [192.168.2.243]
+
+TASK [Edit inline custom script file] *******************************************
+changed: [192.168.2.243]
+
+TASK [Restart custom service] ***************************************************
+changed: [192.168.2.243]
+
+PLAY RECAP **********************************************************************
+192.168.2.243              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+```
+</details>
+
+<img width="1280" alt="OpenStack" src="https://github.com/famasboy888/ansible-configuration-management/assets/23441168/c8b3387d-9f24-42de-a72a-41cbdc3e00d1">
+
 
 
 
