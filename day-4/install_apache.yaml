@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Install apache and nano package
+    package:
+      name:
+         - "{{ apache_package }}"
+         - "{{ nano_package }}"
+      state: latest
+      update_cache: true
