@@ -7,7 +7,7 @@
 sudo nano install_apache.yml
 ```
 
-Referenche for **apt module**: (Ref linkn)[https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html]
+Referenche for **apt module**: [Ref linkn](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html)
 
 ```bash
 ---                                            <== starts with 3 dash lines
