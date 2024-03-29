@@ -91,6 +91,7 @@ PLAY RECAP *********************************************************************
 ```
 </details>
 
+<img width="685" alt="OpenStack" src="https://github.com/famasboy888/ansible-configuration-management/assets/23441168/25857b14-952b-4e73-b87f-9c54e51c07f9">
 
 
 
