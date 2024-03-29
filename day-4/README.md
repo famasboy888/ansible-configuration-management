@@ -19,6 +19,13 @@ Referenche for **[Package Module](https://docs.ansible.com/ansible/latest/collec
       state: latest
       update_cache: true                         <== you can add apt update within single play or bloack 
 ```
+
+Variables are declared inside **inventory file**.
+
+```bash
+192.168.2.243 apache_package="apache2" nano_package="nano"
+```
+
 **Run command:**
 ```bash
 ansible-playbook install_apache.yml
