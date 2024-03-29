@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: master
   become: true
   tasks:
 
@@ -8,6 +8,16 @@
     package:
       name:
          - "{{ apache_package }}"
+      state: latest
+      update_cache: true
+
+- hosts: worker
+  become: true
+  tasks:
+
+  - name: Install apache and nano package
+    package:
+      name:
          - "{{ nano_package }}"
       state: latest
       update_cache: true

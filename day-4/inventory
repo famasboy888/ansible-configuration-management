@@ -1,1 +1,5 @@
-192.168.2.243 apache_package="apache2" nano_package="nano"
+[master]
+192.168.2.243 ansible_user=debian apache_package="apache2"
+
+[worker]
+192.168.2.240 ansible_user=ubuntu nano_package="nano"
