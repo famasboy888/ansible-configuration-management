@@ -22,7 +22,7 @@ All this files will be copied to instance in specific directories
       dest: /usr/local/bin/my_custom_script.sh
       owner: root
       group: root
-      mode: '0644'
+      mode: '0744'
 
   - name: Copy custom service to systemd
     tags: debian
