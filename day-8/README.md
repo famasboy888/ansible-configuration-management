@@ -32,6 +32,7 @@ Reference for **[Copy Module](https://docs.ansible.com/ansible/latest/collection
       dest: /etc/sudoers.d/ops
       owner: root
       group: root
+      mode: '0440'
 ```
 
 **Run command: And target debian tag**
