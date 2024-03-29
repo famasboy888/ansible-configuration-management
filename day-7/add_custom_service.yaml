@@ -1,0 +1,30 @@
+---
+
+- hosts: master
+  become: true
+  tasks:
+
+  - name: Copy custom script to local bin
+    tags: debian
+    copy:
+      src: files/my_custom_script.sh
+      dest: /usr/local/bin/my_custom_script.sh
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: Copy custom service to systemd
+    tags: debian
+    copy:
+      src: files/my_custom_service.service
+      dest: /etc/systemd/system/my_custom_service.service
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: Start custom service
+    tags: debian
+    service:
+        name: my_custom_service
+        state: started
+        enabled: true
