@@ -1,0 +1,4 @@
+- name: Update and Upgrade repo list and pkgs
+  package:
+    update_cache: true
+#    upgrade: 'yes'

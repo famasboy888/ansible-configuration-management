@@ -1,0 +1,9 @@
+[Unit]
+Description=Test run for creating a custom service
+
+[Service]
+ExecStartPre=/bin/sleep 30
+ExecStart=/usr/local/bin/my_custom_script.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+ - name: Copy custom script to local bin
+   copy:
+    src: files/my_custom_script.sh
+    dest: /usr/local/bin/my_custom_script.sh
+    owner: root
+    group: root
+    mode: '0744'

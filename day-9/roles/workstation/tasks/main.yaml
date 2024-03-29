@@ -1,0 +1,5 @@
+- name: Installing apache on workstation
+  package:
+    name:
+       - "{{ apache_package }}"
+    state: latest

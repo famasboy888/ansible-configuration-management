@@ -1,0 +1,41 @@
+---
+
+- hosts: master
+  become: true
+  tasks:
+
+  - name: Installing on Debian master
+    tags: debian
+    package:
+      name:
+         - "{{ apache_package }}"
+      state: latest
+      update_cache: true
+
+  - name: Copy and replace apache index.html 
+    tags: debian
+    copy:
+      src: files/default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: Start apache2
+    tags: debian,apache2
+    service:
+        name: apache2
+        state: started
+        enabled: true
+
+- hosts: worker
+  become: true
+  tasks:
+
+  - name: Installing on Ubuntu worker
+    tags: ubuntu
+    package:
+      name:
+         - "{{ nano_package }}"
+      state: latest
+      update_cache: true

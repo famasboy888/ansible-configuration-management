@@ -1,0 +1,25 @@
+---
+
+- hosts: master
+  become: true
+  tasks:
+
+  - name: Create user called ops
+    tags: debian
+    user:
+      name: ops
+      groups: root
+
+  - name: add SSH keys for ops
+    tags: debian
+    authorized_key:
+      user: ops
+      key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDR0ceaIXMZSQPx/J5p6zaDCTpZmQEBQFsfXCt9eojSmisjxGFjoomVSbfcJRom/vKI208VM4EkarsCmAX9jRwdlddi5VeK0sikICkPfqmS24gMUN+IPnNpMxXBgVbdncn+lShwtX+G4E/YWqsa0WHzLCKVncugkd+EIsCijTD1JYkIxe+CeT+w4zsVFuUp19BPgzP+++D3G1hD0DzsuB/h6+R0qtcF879CMZlyf9e0zkjV2ipTHue+RnBkIM1lQ5JzGQhxdlEoFYAx+ITAKs9TyeFlS601Ia+gwU/9KUtcKj1//MI4YR7cPL0egorGAWS0X/McTU0SFkfld2P2trN/ Generated-by-Nova'
+
+  - name: add sudoer file
+    tags: debian
+    copy:
+      src: files/sudoer_ops
+      dest: /etc/sudoers.d/ops
+      owner: root
+      group: root
