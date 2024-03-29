@@ -1,4 +1,4 @@
-# Ansible Day-4
+# Ansible Day-6
 
 ## Transfer files from Controller to Instance using Ansible using COPY module
 
