@@ -2,7 +2,7 @@
 
 ## Run Playbook based on Group/Node
 
-Referenche for **[Package Module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html)**.
+Reference for **[Package Module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/package_module.html)**.
 
 ```bash
 ---
